@@ -39,6 +39,24 @@ Builds for [FFmpeg](https://ffmpeg.org) and its supporting libraries.
 - [libxvid](https://github.com/ffbuilds/static-libxvid)
 - [libzimg](https://github.com/ffbuilds/static-libzimg)
 
+## Key Features
+
+### Cross-platform
+Runs on amd64, arm64, arm/v7, and arm/v6.
+
+### Matrix Builds
+We matrix build on Alpine version and platform. Manifest lists are generated after all of the builds are complete, so that the images can always be referenced by the same tag or digest (instead of one tag/digest per platform).
+
+### Caching
+We utilize the [GitHub Actions cache](https://docs.docker.com/build/building/cache/backends/gha/) for docker layer caching with mode=max. For this reason, we try to keep the layers small and fast.
+
+### Storage in GHCR
+We store all of the images publicly in ghcr.io.
+
+## Versioning tools
+- [wader/bump](https://github.com/wader/bump)
+- @dependabot
+
 ## Contributors
 - [@wader](https://github.com/wader) - orignal author of [wader/static-ffmpeg](https://github.com/wader/static-ffmpeg)
 - [@binoculars](https://github.com/binoculars)
