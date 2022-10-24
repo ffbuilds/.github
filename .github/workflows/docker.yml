@@ -3,6 +3,14 @@ name: Create and publish a Docker image
 
 on:
   workflow_call:
+    inputs:
+      # bump: alpine /default: ([\d.]+) # stable/ docker:alpine|^3
+      # bump: alpine link "Release notes" https://alpinelinux.org/posts/Alpine-$LATEST-released.html
+      alpine_stable:
+        type: string
+        description: The current stable alpine version
+        default: 3.16.2 # stable
+        required: false
 
 env:
   REGISTRY: ghcr.io
@@ -19,9 +27,7 @@ jobs:
       fail-fast: false
       matrix:
         alpine_version:
-          # bump: alpine /- ([\d.]+) # updateme/ docker:alpine|^3
-          # bump: alpine link "Release notes" https://alpinelinux.org/posts/Alpine-$LATEST-released.html
-          - 3.16.2 # updateme
+          - ${{ inputs.alpine_stable }}
           - edge
         platform:
           - linux/amd64
@@ -86,7 +92,7 @@ jobs:
     strategy:
       matrix:
         alpine_version:
-          - 3.16.2 # updateme
+          - ${{ inputs.alpine_stable }}
           - edge
 
     steps:
