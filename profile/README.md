@@ -1,5 +1,9 @@
 Builds for [FFmpeg](https://ffmpeg.org) and its supporting libraries.
 
+## FFmpeg
+- [static-ffmpeg-gplv3](https://github.com/ffbuilds/static-ffmpeg-gplv3) - a static GPL version 3 build
+- [static-ffmpeg-minimal](https://github.com/ffbuilds/static-ffmpeg-minimal) - a static minimal FFmpeg build (LGPL)
+
 ## Libraries built from source
 - [libaom](https://github.com/ffbuilds/static-libaom)
 - [libaribb24](https://github.com/ffbuilds/static-libaribb24)
