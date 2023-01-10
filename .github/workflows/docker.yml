@@ -9,7 +9,7 @@ on:
       alpine_stable:
         type: string
         description: The current stable alpine version
-        default: 3.17.0 # stable
+        default: 3.17.1 # stable
         required: false
 
 env:
