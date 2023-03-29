@@ -1,5 +1,6 @@
 name: 'Automatic version updates'
 on:
+  workflow_call:
   schedule:
     # minute hour dom month dow (UTC)
     - cron: '0 9 * * *'
