@@ -11,6 +11,11 @@ on:
         description: The current stable alpine version
         default: 3.17.2 # stable
         required: false
+    secrets:
+      APP_ID:
+        required: true
+      APP_PRIVATE_KEY:
+        required: true
 
 env:
   REGISTRY: ghcr.io
