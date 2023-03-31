@@ -1,6 +1,11 @@
 name: 'Automatic version updates'
 on:
   workflow_call:
+    secrets:
+      APP_ID:
+        required: true
+      APP_PRIVATE_KEY:
+        required: true
   schedule:
     # minute hour dom month dow (UTC)
     - cron: '0 9 * * *'
