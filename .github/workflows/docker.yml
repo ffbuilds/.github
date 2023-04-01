@@ -56,6 +56,8 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          permissions: |-
+            {"packages": "write"}
 
       - name: Checkout repository
         uses: actions/checkout@v3.5.0
