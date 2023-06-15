@@ -9,7 +9,7 @@ on:
       alpine_stable:
         type: string
         description: The current stable alpine version
-        default: 3.17.2 # stable
+        default: 3.18.2 # stable
         required: false
     secrets:
       APP_ID:
