@@ -1,4 +1,8 @@
+---
 name: 'Automatic version updates'
+
+permissions: {}
+
 on:
   workflow_call:
     secrets:

@@ -1,6 +1,8 @@
 ---
 name: Create and publish a Docker image
 
+permissions: {}
+
 on:
   workflow_call:
     inputs:
@@ -134,16 +136,19 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-alpine_${{ matrix.alpine_version }}
 
       - name: Create and push manifest
+        env:
+          META_TAGS: ${{ steps.meta.outputs.tags }}
         run: |
-          TAGS=(${{ steps.meta.outputs.tags }})
-          for TAG in "${TAGS[@]}"; do
-            docker manifest create ${TAG} \
-              ${TAG}-amd64 \
-              ${TAG}-arm64 \
-              ${TAG}-arm_v7 \
-              ${TAG}-arm_v6
-            docker manifest push ${TAG}
-          done
+          set -euo pipefail
+          while IFS= read -r TAG; do
+            [ -n "$TAG" ] || continue
+            docker manifest create "$TAG" \
+              "$TAG-amd64" \
+              "$TAG-arm64" \
+              "$TAG-arm_v7" \
+              "$TAG-arm_v6"
+            docker manifest push "$TAG"
+          done <<< "$META_TAGS"
 
   github-release:
     if: inputs.push_images
