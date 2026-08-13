@@ -14,7 +14,9 @@ Builds for [FFmpeg](https://ffmpeg.org) and its supporting libraries.
 - [libdavs2](https://github.com/ffbuilds/static-libdavs2)
 - [libgme](https://github.com/ffbuilds/static-libgme)
 - [libgsm](https://github.com/ffbuilds/static-libgsm)
+- [libjxl](https://github.com/ffbuilds/static-libjxl)
 - [libkvazaar](https://github.com/ffbuilds/static-libkvazaar)
+- [liblcms2](https://github.com/ffbuilds/static-liblcms2)
 - [libmodplug](https://github.com/ffbuilds/static-libmodplug)
 - [libmp3lame](https://github.com/ffbuilds/static-libmp3lame)
 - [libmysofa](https://github.com/ffbuilds/static-libmysofa)
@@ -22,11 +24,15 @@ Builds for [FFmpeg](https://ffmpeg.org) and its supporting libraries.
 - [libopencore-amr](https://github.com/ffbuilds/static-libopencore-amr)
 - [libopenjpeg](https://github.com/ffbuilds/static-libopenjpeg)
 - [libopus](https://github.com/ffbuilds/static-libopus)
+- [librabbitmq](https://github.com/ffbuilds/static-librabbitmq)
 - [librav1e](https://github.com/ffbuilds/static-librav1e)
+- [librtmp](https://github.com/ffbuilds/static-librtmp)
 - [librubberband](https://github.com/ffbuilds/static-librubberband)
 - [libsamplerate](https://github.com/ffbuilds/static-libsamplerate)
 - [libshine](https://github.com/ffbuilds/static-libshine)
 - [libspeex](https://github.com/ffbuilds/static-libspeex)
+- [libsrt](https://github.com/ffbuilds/static-libsrt)
+- [libssh](https://github.com/ffbuilds/static-libssh)
 - [libsvtav1](https://github.com/ffbuilds/static-libsvtav1)
 - [libtheora](https://github.com/ffbuilds/static-libtheora)
 - [libtwolame](https://github.com/ffbuilds/static-libtwolame)
@@ -35,13 +41,19 @@ Builds for [FFmpeg](https://ffmpeg.org) and its supporting libraries.
 - [libvmaf](https://github.com/ffbuilds/static-libvmaf)
 - [libvorbis](https://github.com/ffbuilds/static-libvorbis)
 - [libvpx](https://github.com/ffbuilds/static-libvpx)
+- [libvvenc](https://github.com/ffbuilds/static-libvvenc)
 - [libwebp](https://github.com/ffbuilds/static-libwebp)
 - [libx264](https://github.com/ffbuilds/static-libx264)
 - [libx265](https://github.com/ffbuilds/static-libx265)
 - [libxavs2](https://github.com/ffbuilds/static-libxavs2)
+- [libxevd](https://github.com/ffbuilds/static-libxevd)
+- [libxeve](https://github.com/ffbuilds/static-libxeve)
 - [libxml2](https://github.com/ffbuilds/static-libxml2)
 - [libxvid](https://github.com/ffbuilds/static-libxvid)
 - [libzimg](https://github.com/ffbuilds/static-libzimg)
+- [libzmq](https://github.com/ffbuilds/static-libzmq)
+
+Alpine packages (not separate images): OpenSSL (`--enable-openssl`) and HarfBuzz (`--enable-libharfbuzz`).
 
 ## Key Features
 
@@ -56,6 +68,9 @@ We utilize the [GitHub Actions cache](https://docs.docker.com/build/building/cac
 
 ### Storage in GHCR
 We store all of the images publicly in ghcr.io.
+
+### Automatic updates
+Daily [wader/bump](https://github.com/wader/bump) PRs auto-merge when CI is green, publish GHCR images, create GitHub Releases, and rebuild FFmpeg when a library image updates.
 
 ## Versioning tools
 - [wader/bump](https://github.com/wader/bump)

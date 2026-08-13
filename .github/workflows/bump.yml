@@ -15,15 +15,31 @@ on:
 jobs:
   bump:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - uses: tibdex/github-app-token@v1
+      - uses: actions/create-github-app-token@v3
         id: generate-token
         with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
-      - uses: actions/checkout@v3.5.3
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+          permission-workflows: write
+      - uses: actions/checkout@v5
         with:
           token: ${{ steps.generate-token.outputs.token }}
       - uses: wader/bump/action@master
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+      - name: Enable auto-merge on bump PRs
+        env:
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+        run: |
+          set -euo pipefail
+          gh pr list --state open --json number,title --jq '.[] | select(.title | test("^bump:")) | .number' \
+            | while read -r n; do
+                [ -n "$n" ] || continue
+                gh pr merge "$n" --auto --squash || true
+              done
