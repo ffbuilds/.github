@@ -11,7 +11,7 @@ on:
       alpine_stable:
         type: string
         description: The current stable alpine version
-        default: 3.24.1 # stable
+        default: 3.24.3 # stable
         required: false
       push_images:
         type: boolean
